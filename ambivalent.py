@@ -3,9 +3,9 @@ import streamlit as st
 import time
 import re  # Import regular expressions
 
-st.subheader("智能机器人")
+st.subheader("Political Chatbot")
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-assistant_id = 'asst_h69sAdjrcK7yvBk5DHIl4AsJ'
+assistant_id = 'asst_XmWu1V5B3OjGwAev2Rovk2zB'
 speed = 30
 
 
@@ -34,9 +34,9 @@ def local_css(file_name):
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 local_css("style.css")
-st.sidebar.markdown("#### 完成对话后，复制对话编号并粘贴至下方问卷的文本输入框中。\n:star: 请勿将其输入至聊天机器人对话页面。")
+st.sidebar.markdown("#### After the conversation, please copy the thread_id from the sidebar. Paste the thread_id into the text box below. \n:star: Please do not input it into the chatbot dialogue page.")
 st.sidebar.info(st.session_state.thread_id)
-st.sidebar.caption("请复制上述对话编号。")
+st.sidebar.caption("Please copy the thread_id above.")
 
 def update_typing_animation(placeholder, current_dots):
     """
@@ -47,7 +47,7 @@ def update_typing_animation(placeholder, current_dots):
     current_dots (int): Current number of dots in the animation.
     """
     num_dots = (current_dots % 6) + 1  # Cycle through 1 to 3 dots
-    placeholder.markdown("回答生成中，请耐心等待" + "." * num_dots)
+    placeholder.markdown("Generating the response. Please wait" + "." * num_dots)
     return num_dots
 
 
@@ -60,10 +60,11 @@ if len(st.session_state.messages) < max_messages:
     user_input = st.chat_input("")
     if not st.session_state.first_message_sent:
         st.markdown(
-            "<strong>任务二：策划科普节目</strong><br>在科普节目策划会议上，你将发言，与同事一起讨论呈现哪些与量子力学有关的知识点，以何种巧妙而有趣的方式呈现，并考虑如何使用生活中的例子。<br><br>"
-            "您可以通过复制粘贴<br>"
-            "<span style='color: #8B0000;'>什么是量子力学？</span><br>"
-            "到下面👇🏻的对话框，开启和聊天机器人的对话，寻求建议和帮助。", unsafe_allow_html=True
+            "<strong>Your goal is to discuss with the chatbot about abortion. </strong><br>\
+                Please start by stating your opinion about abortion. <br><br>"
+            "In the previous survey, you indicated that you think: <br>"
+            "<span style='color: #8B0000;'> 'I am an abortion supporter. I think abortion should be allowed. '</span><br>"
+            "Please copy and paste this sentence to the chat box below 👇🏻 to start your conversation with the bot.", unsafe_allow_html=True
         )
     if user_input:
         st.session_state.first_message_sent = True
@@ -138,7 +139,7 @@ if len(st.session_state.messages) < max_messages:
                     else:
                         error_message_html = """
                             <div style='display: inline-block; border:2px solid red; padding: 4px; border-radius: 5px; margin-bottom: 20px; color: red;'>
-                                <strong>网络错误:</strong> 请重试。
+                                <strong>Network error:</strong> Please retry。
                             </div>
                             """
                         full_response = error_message_html
@@ -166,7 +167,7 @@ else:
         with st.chat_message("assistant"):
             message_placeholder = st.empty()
             message_placeholder.info(
-                "已达到此聊天机器人的最大对话限制，请复制侧边栏对话编号。将该对话编号粘贴在下面的文本框中。"
+                "The maximum dialogue limit for this chatbot has been reached. Please copy the thread_id from the sidebar. Paste the thread_id into the text box below."
             )
     st.chat_input(disabled=True)
 
