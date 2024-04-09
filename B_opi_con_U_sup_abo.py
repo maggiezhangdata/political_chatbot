@@ -5,8 +5,9 @@ import re  # Import regular expressions
 
 st.subheader("Political Chatbot")
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-assistant_id = st.secrets["assistant_id_i_c"]
-speed = 30
+assistant_id = st.secrets["B_opi_con_U_sup_abo"]
+print(assistant_id)
+speed = 60
 
 
 
@@ -34,9 +35,9 @@ def local_css(file_name):
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 local_css("style.css")
-st.sidebar.markdown("#### After the conversation, please copy the thread_id from the sidebar. Paste the thread_id into the text box below. \n:star: Please do not input it into the chatbot dialogue page.")
-st.sidebar.info(st.session_state.thread_id)
-st.sidebar.caption("Please copy the thread_id above.")
+st.sidebar.markdown("#### After the conversation, please copy the thread_id blow. Paste the thread_id into the text box under the chat window. \n :star: Please do not input it into the chatbot dialogue page. <br> :star: The thread_id will be shown after at least 5 rounds of chats.", unsafe_allow_html=True)
+# st.sidebar.info(st.session_state.thread_id)
+st.sidebar.caption("Please copy the thread_id below.")
 
 def update_typing_animation(placeholder, current_dots):
     """
@@ -53,9 +54,15 @@ def update_typing_animation(placeholder, current_dots):
 
 
 # Handling message input and response
-max_messages = 30  # 10 iterations of conversation (user + assistant)
+max_messages = 40  # 10 iterations of conversation (user + assistant)
+
+min_messages = 10
 
 if len(st.session_state.messages) < max_messages:
+    
+    if len(st.session_state.messages) >= min_messages:
+        st.session_state.show_thread_id = True
+        st.sidebar.info(st.session_state.thread_id)
     
     user_input = st.chat_input("")
     if not st.session_state.first_message_sent:
@@ -157,6 +164,7 @@ if len(st.session_state.messages) < max_messages:
             )
 
 else:
+    st.sidebar.info(st.session_state.thread_id)
 
     if user_input:= st.chat_input(""):
         with st.chat_message("user"):
