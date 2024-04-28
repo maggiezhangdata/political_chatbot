@@ -5,7 +5,7 @@ import re  # Import regular expressions
 
 st.subheader("Political Chatbot")
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-assistant_id = st.secrets["A_info_amb_U_anti_ban"]
+assistant_id = st.secrets["A_info_con_U_anti_ban"]
 print(assistant_id)
 speed = 200
 
