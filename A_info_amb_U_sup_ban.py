@@ -74,7 +74,7 @@ if len(st.session_state.messages) < max_messages:
         st.image("https://snworksceo.imgix.net/cav/3118d89a-c321-424c-8b4d-4e0c672d1c4e.sized-1000x1000.jpg", width=240)
         st.markdown(
             "In the previous survey, you indicated that you think: <br>"
-            "<strong><span style='color: #8B0000;'> TikTok should not be banned. </span></strong><br>"
+            "<strong><span style='color: #8B0000;'> TikTok should be banned. </span></strong><br>"
             "Please <strong>copy and paste</strong> this sentence to the chat box below 👇🏻 to start your conversation with the bot.", unsafe_allow_html=True
         )
     if user_input:
