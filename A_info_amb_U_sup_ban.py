@@ -36,7 +36,7 @@ def local_css(file_name):
 
 local_css("style.css")
 st.sidebar.markdown("##### 1. Begin by stating your opinion to the chatbot. \n "
-                    "##### 2. Have 4+ conversation rounds. \n"
+                    "##### 2. Have 4+ conversation rounds. You can question, agree or disagree, challenge, or ask for more clarification with the chatbot. \n"
                     f"##### 3. Thread_id appears after <strong><span style='color: #8B0000;'>  {int((8 - len(st.session_state.messages))/2)} rounds </span></strong>.\n"
                     , unsafe_allow_html=True)
 # st.sidebar.info(st.session_state.thread_id)
