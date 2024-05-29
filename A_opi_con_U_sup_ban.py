@@ -75,7 +75,7 @@ if len(st.session_state.messages) < max_messages:
         st.markdown(
             "In the previous survey, you indicated that you think: <br>"
             "<strong><span style='color: #8B0000;'> TikTok should be banned. </span></strong><br>"
-            "Please <strong>copy and paste</strong> this sentence to the chat box below 👇🏻 to start your conversation with the bot.", unsafe_allow_html=True
+            "Please <strong>copy and paste the colored sentence above</strong> to the chat box below 👇🏻 to start your conversation with the bot.", unsafe_allow_html=True
         )
     if user_input:
         st.session_state.first_message_sent = True
